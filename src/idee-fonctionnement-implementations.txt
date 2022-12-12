@@ -1,0 +1,19 @@
+===========
+    idée
+===========
+- je dois faire en sorte que chaque type de héros ai une liste d'arme définis
+- créer des villages pour qu'on puisse acheter des items et des munitions pour le hunter
+
+
+
+===============
+  Contraintes
+===============
+- Il faut créer une liste d'armes et d'item définis
+- chaque ennemy dois avoir un loot d'items bien défini avec ses chances d'apparaitre.
+- donner une quantité finie de munition au hunters
+- changer d'arme remet l'arm dans l'inventaire.
+- Il faut créer une stat d'armure
+
+
+-j'aimerais réelement faire une méthode, une classse ou un truc qui permet de gérer les effets temporaires.
