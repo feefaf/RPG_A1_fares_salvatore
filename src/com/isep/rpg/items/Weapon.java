@@ -2,10 +2,11 @@ package com.isep.rpg.items;
 
 public class Weapon extends Item {
 
-    public Weapon(String name, String holder,int damagePoints) {
+    public Weapon(String name, String holder,int damagePoints, int price) {
         super(name);
         this.holder = holder;
         this.damagePoints = damagePoints;
+        this.price = price;
     }
 
     public int getDamagePoints() {
@@ -13,6 +14,12 @@ public class Weapon extends Item {
     }
     // Une arme inflige des points de dégats
     public String WhoCanHoldIt(){ return holder;}
+
+    @Override
+    public String priceInfo(){
+        String message = getName()+ " : "+getDamagePoints()+ " DMG : "+getPrice()+ " Gold";
+        return (message);
+    }
     private int damagePoints;
     private String holder;
 }

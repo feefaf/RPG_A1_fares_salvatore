@@ -5,19 +5,25 @@ import com.isep.rpg.gentils.SpellCaster;
 import static com.isep.rpg.Game.displayMessage;
 
 public class Potion extends Consumable{
-    public Potion(String name, int manaContenance, int nbre) {
+    public Potion(String name, int manaContenance, int nbre, int price) {
         super(name);
         this.manaRecovery = manaContenance;
         this.quantity = nbre;
+        this.price = price;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 
     public void usePotion(SpellCaster manaUser){
         if (quantity >0){
             manaUser.heal(manaRecovery);
             quantity -= 1;
-            displayMessage(manaUser.getName()+ " consomme "+getName()+" et regagne "+ manaRecovery+" MANA !");
+            displayMessage(manaUser.getName()+ " consomme "+ name +" et regagne "+ manaRecovery+" MANA !");
         } else {
-            displayMessage("Vous n'avez plus de assez de "+getName()+" pour en consommer !");
+            displayMessage("Vous n'avez plus de assez de "+ name +" pour en consommer !");
         }
     }
 
@@ -30,7 +36,7 @@ public class Potion extends Consumable{
 
     @Override
     public String info(){
-        String message = getQuantity()+"X "+getName() + " : "+manaRecovery+" MANA.";
+        String message = getQuantity()+"X "+ name + " : "+manaRecovery+" MANA.";
         return message;
     }
 

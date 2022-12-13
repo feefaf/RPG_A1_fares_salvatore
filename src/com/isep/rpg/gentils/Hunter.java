@@ -79,7 +79,7 @@ public class Hunter extends Hero {
                 Game.displayMessage("Cette arme ne peut etre équipée que par un  " + ((Weapon) item).WhoCanHoldIt());
             }
         } else if (item instanceof Armor) {
-            if ((((Armor) item).WhoCanHoldIt() == "Hunter")){
+            if ((((Armor) item).WhoCanHoldIt() == "Everyone")){
                 armorItem = (Armor) item;//on donne l'armure au hero
                 setArmor(armorItem.getDefValue());//on donne la valeur de l'armur en guise de protection au hero
             }else{
@@ -116,10 +116,17 @@ public class Hunter extends Hero {
     public void setIfInDefense(boolean InDefense){
         defense = InDefense;
     }
+
+    public String getWhatAmI(){
+        return whatAmI;
+    }
+
     private Weapon weapon;
     private Armor armorItem;
 
     private int ammo;
     private boolean defense;
+
+    private String whatAmI = "Hunter";
 
 }

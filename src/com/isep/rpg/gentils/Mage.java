@@ -21,7 +21,7 @@ public class Mage extends SpellCaster{
     public void attack(Combatant combatant) {
         calculatedDamage = weapon.getDamagePoints() + getDamageBoost();
         combatant.loose(calculatedDamage);
-        System.out.println(getName() + " a fais perdre "+ calculatedDamage + "hp a"+ combatant.getName()+" avec son "+ weapon.getName());
+        displayMessage(getName() + " a fais perdre "+ calculatedDamage + "hp a"+ combatant.getName()+" avec son "+ weapon.getName());
     }
 
     @Override
@@ -35,7 +35,8 @@ public class Mage extends SpellCaster{
                     [1]- Attaquer\s
                     [2]- Se défendre\s
                     [3]- Lancer un Sort\s
-                    [4]- Utiliser un consommable\n """);
+                    [4]- Utiliser un consommable\n 
+                    """);
 
             choix = sc.nextInt(); // On lit la réponse de l'utilisateur
             if (choix < 1 || choix > 4) {
@@ -71,7 +72,7 @@ public class Mage extends SpellCaster{
             calculatedDamage = (25+getDamageBoost());
             combatant.loose(calculatedDamage);
 
-            System.out.println("Le sort a fais perdre "+ calculatedDamage + "hp a"+ combatant.getName());
+            System.out.println("Le sort a fais perdre "+ calculatedDamage + " hp a "+ combatant.getName());
         } else {
             System.out.println(getName()+ "n'a pas assez de mana pour lancer ce sort !");
             this.attack(combatant); // On appelle la méthode attack()
@@ -119,7 +120,7 @@ public class Mage extends SpellCaster{
                 displayMessage("Cette arme ne peut etre équipée que par un  " + ((Weapon) item).WhoCanHoldIt());
             }
         } else if (item instanceof Armor) {
-            if ((((Armor) item).WhoCanHoldIt() == "Mage")){
+            if ((((Armor) item).WhoCanHoldIt() == "Everyone")){
                 armorItem = (Armor) item;//on donne l'armure au hero
                 setArmor(armorItem.getDefValue());//on donne la valeur de l'armur en guise de protection au hero
             }else{
@@ -168,8 +169,14 @@ public class Mage extends SpellCaster{
     public void setIfInDefense(boolean InDefense){
         defense = InDefense;
     }
+
+    public String getWhatAmI(){
+        return whatAmI;
+    }
     private Weapon weapon;
     private Armor armorItem;
     private boolean defense;
     private int calculatedDamage;
+
+    private String whatAmI = "Mage";
 }

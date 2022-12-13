@@ -5,12 +5,14 @@ import com.isep.rpg.gentils.Hero;
 import static com.isep.rpg.Game.displayMessage;
 
 public class Food extends Consumable{
-    public Food(String name, int hpContenance, int nbre) {
+    public Food(String name, int hpContenance, int nbre, int price) {
         super(name);
         this.hpRecovery = hpContenance;
         this.quantity = nbre;
+        this.price = price;
     }
 
+    @Override
     public String getName() {
         return name;
     }
@@ -19,9 +21,9 @@ public class Food extends Consumable{
         if (quantity >0){
             hero.heal(hpRecovery);
             quantity -= 1;
-            displayMessage(hero.getName()+ " consomme "+getName()+" et regagne "+ hpRecovery+" HP !");
+            displayMessage(hero.getName()+ " consomme "+name+" et regagne "+ hpRecovery+" HP !");
         } else {
-            displayMessage("Vous n'avez plus de assez de "+getName()+" pour en consommer !");
+            displayMessage("Vous n'avez plus de assez de "+ name +" pour en consommer !");
         }
     }
 
@@ -35,7 +37,7 @@ public class Food extends Consumable{
 
     @Override
     public String info(){
-        String message = getQuantity()+"X "+getName() + " : "+hpRecovery+" HP.";
+        String message = getQuantity()+"X "+ name + " : "+hpRecovery+" HP.";
         return message;
     }
 

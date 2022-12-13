@@ -18,6 +18,7 @@ public class Healer extends SpellCaster{
     public void Heal(Combatant combatant){
         combatant.heal(healPower);
         this.ManaSpell(20);
+        displayMessage(getName()+ " soigne "+ combatant.getName() +" et lui redonne "+healPower+" HP");
     }
     @Override
     public void attack(Combatant combatant) {
@@ -74,7 +75,7 @@ public class Healer extends SpellCaster{
                 Game.displayMessage("Cette arme ne peut etre équipée que par un  " + ((Weapon) item).WhoCanHoldIt());
             }
         } else if (item instanceof Armor) {
-            if ((((Armor) item).WhoCanHoldIt() == "Healer")){
+            if ((((Armor) item).WhoCanHoldIt() == "Everyone")){
                 armorItem = (Armor) item;//on donne l'armure au hero
                 setArmor(armorItem.getDefValue());//on donne la valeur de l'armur en guise de protection au hero
             }else{
@@ -128,11 +129,17 @@ public class Healer extends SpellCaster{
     public void setHealPower(int newHealPower){
         this.healPower = newHealPower;
     }
+
+    public String getWhatAmI(){
+        return whatAmI;
+    }
     //public void remove();
     private Weapon weapon;
     private Armor armorItem;
     private int calculatedDamage;
     private boolean defense;
-    private int healPower = 20;
+    private int healPower = 40;
 
+
+    private String whatAmI = "Healer";
 }

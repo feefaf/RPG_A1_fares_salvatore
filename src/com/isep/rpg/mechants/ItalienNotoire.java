@@ -1,24 +1,21 @@
 package com.isep.rpg.mechants;
 
 import com.isep.rpg.Combatant;
-import com.isep.rpg.mechants.Ennemy;
 
 import static com.isep.rpg.Game.displayMessage;
 
-public class Dragon extends Ennemy {
-
-    public Dragon(String n, int HP, int dmg) {
+public class ItalienNotoire extends Ennemy{
+    public ItalienNotoire(String n, int HP, int dmg) {
         super(n, HP, dmg);
     }
 
     // Implémentation de la méthode abstraite "fight" par le dragon
     @Override
     public void attack(Combatant combatant) {
-        displayMessage("GRAAAAAAAAAAAAAAAAAAAAAOU");
+        displayMessage("MAMA MIAAA");
         calculatedDamage = (int)((getDamagePoints() -(int)(getArmorPoint()*getDamagePoints())) * ((combatant.IsInDefense()) ? 0.5: 1));
         combatant.loose( calculatedDamage );
         displayMessage(getName() + " attaque "+combatant.getName() +" et lui inflige "+ calculatedDamage + "Degats");
-
     }
 
     @Override
